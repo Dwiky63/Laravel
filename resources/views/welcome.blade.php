@@ -1,12 +1,53 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.frontend')
 
-        <title>Laravel</title>
+@section('title', 'Home')
 
-        <!-- Fonts -->
+@section('content')
+<section class="hero-section text-center py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Welcome to iDev Company</h1>
+        <p class="lead mb-4">Empowering Indonesia's digital future for Gen Z and Millennials</p>
+        <div class="d-flex gap-3 justify-content-center">
+            <a href="/about" class="btn btn-primary btn-lg">Learn More</a>
+            <a href="/contact" class="btn btn-outline-primary btn-lg">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<section class="features-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Solutions</h5>
+                        <p class="card-text">We provide cutting-edge digital solutions tailored to your needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Creative Services</h5>
+                        <p class="card-text">Transform your ideas into reality with our creative team.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Expert Support</h5>
+                        <p class="card-text">24/7 support to ensure your success every step of the way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+
+<!--IGNORE_THIS_COMMENT-->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 

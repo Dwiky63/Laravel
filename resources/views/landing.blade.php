@@ -1,44 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="IDN Media - Empowering Indonesia's digital future for Gen Z and Millennials" />
-    <meta name="keywords" content="IDN Media, digital platform, creators, live streaming, entertainment" />
-    <meta name="author" content="IDN Media" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://idnmedia.com/" />
-    <meta property="og:title" content="IDN Media - For A Better Indonesia" />
-    <meta property="og:description" content="Empowering Gen Z & Millennials through digital media, live streaming, and creator economy." />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://idnmedia.com/" />
-    <meta property="twitter:title" content="IDN Media - For A Better Indonesia" />
-    <meta property="twitter:description" content="Empowering Gen Z & Millennials through digital media, live streaming, and creator economy." />
+@extends('layouts.frontend')
 
-    <title>IDN Media - For A Better Indonesia</title>
+@section('title', 'Welcome')
 
-    <!-- Preload Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+@section('content')
+<section class="hero-section text-center py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Welcome to iDev Company</h1>
+        <p class="lead mb-4">Empowering Indonesia's digital future for Gen Z and Millennials</p>
+        <div class="d-flex gap-3 justify-content-center">
+            <a href="/about" class="btn btn-primary btn-lg">Learn More</a>
+            <a href="/contact" class="btn btn-outline-primary btn-lg">Contact Us</a>
+        </div>
+    </div>
+</section>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='60' font-size='60' font-weight='bold' fill='%23E63946' text-anchor='middle'>I</text></svg>" />
-
-    <!-- Vite CSS -->
-    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
-  </head>
-  <body>
-    <!-- React App Mount Point -->
-    <div id="app"></div>
-
-    <!-- Optional: Loading state (while React loads) -->
-    <script>
-      document.documentElement.style.colorScheme = 'light';
-    </script>
-  </body>
-</html>
+<section class="features-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Solutions</h5>
+                        <p class="card-text">We provide cutting-edge digital solutions tailored to your needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Creative Services</h5>
+                        <p class="card-text">Transform your ideas into reality with our creative team.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Expert Support</h5>
+                        <p class="card-text">24/7 support to ensure your success every step of the way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
