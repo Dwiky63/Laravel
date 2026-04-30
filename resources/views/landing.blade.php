@@ -1,441 +1,285 @@
 @extends('layouts.frontend')
 
-@section('title', 'Your Company Media - Democratizing Information')
+@section('title', 'Modern News Media')
 
 @section('content')
-<<<<<<< HEAD
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"> 
-        <div class="container"> 
-            <a class="navbar-brand" href="#">modern<span style="color:white">news</span></a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav"> 
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link px-3" href="#home">home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#news">news</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#career">career</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#about us">about us</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Home Section -->
-    <section id="home" class="py-5 bg-white">
-        <div class="container">
-            <div class="row g-4">
-                <!-- Slide Show -->
-                <div class="col-lg-8">
-                    <h2 class="fw-bold mb-4 border-4 border-warning ps-3">Hot TOPICS</h2>
-                    <div id="hotNewsCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" id="hotNewsItem">
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Latest News List -->
-                <div class="col-lg-4">
-                    <h2 class="fw-bold mb-4 border-4 boreder-primary ps-3"> latestnews </h2>
-                    <div class="latest-news-container" id="latestNewsList">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<style>
+:root {
+    --brand-bg: #f8f9fa;
+    --brand-primary: #ff6b35;
+    --brand-accent: #1d73b9;
+    --brand-success: #18b0a4;
+    --brand-muted: #5b6d8b;
+    --brand-light: #ffffff;
+}
+body {
+    background: var(--brand-bg);
+    color: #1f2937;
+}
+.nav-pills .nav-link {
+    border-radius: 999px;
+    padding: .75rem 1.25rem;
+    color: #374151;
+}
+.nav-pills .nav-link.active,
+.nav-pills .nav-link:hover {
+    background: var(--brand-primary);
+    color: #fff;
+}
+.rounded-card {
+    border-radius: 1.5rem;
+    background: #fff;
+    border: none;
+}
+.card-no-shadow {
+    box-shadow: none;
+}
+.section-heading {
+    font-weight: 700;
+    letter-spacing: -.03em;
+}
+.section-subtitle {
+    color: var(--brand-muted);
+}
+.latest-news-list .list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+.latest-news-list .news-badge {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+.career-card {
+    border-radius: 1.4rem;
+    background: linear-gradient(135deg, rgba(255,107,53,.12), rgba(29,115,185,.1));
+    border: 1px solid rgba(29,115,185,.15);
+}
+.career-card .btn {
+    border-radius: 999px;
+}
+.about-panel {
+    border-radius: 1.4rem;
+    background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,249,250,.95));
+    padding: 2rem;
+}
+.map-frame {
+    border: 0;
+    width: 100%;
+    min-height: 280px;
+    border-radius: 1.25rem;
+}
+@media (max-width: 767px) {
+    .nav-pills {
+        flex-wrap: wrap;
+    }
+}
+</style>
 
-    <!-- New section -->
-    <section id="news" class="parallax-section">
-        <div class="container">
-            <div class="section-overlay text-center">
-                <h2 class="display-5 fw-800 mb-4" style="color: var(--brand-blue);"> world class jurnalism</h2>
-                <p class="lead mb-4">fwpjoqjfow</p>
-                <button class="btn btn-blue btn-lg px-5">Explore</button>
+<section id="home" class="py-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
+        <div>
+            <span class="badge text-bg-warning rounded-pill mb-3">Trusted news daily</span>
+            <h1 class="display-5 fw-bold section-heading">Modern News for Every Story</h1>
+            <p class="lead section-subtitle">A polished, flat design news landing page with live-style headlines, career highlights, and company profile details.</p>
+        </div>
+        <nav class="nav nav-pills align-self-stretch">
+            <a class="nav-link active" href="#home">Home</a>
+            <a class="nav-link" href="#news">News</a>
+            <a class="nav-link" href="#career">Career</a>
+            <a class="nav-link" href="#about">About Us</a>
+        </nav>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div id="hotNewsCarousel" class="carousel slide rounded-card overflow-hidden card-no-shadow" data-bs-ride="carousel">
+                <div class="carousel-indicators"></div>
+                <div class="carousel-inner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-    </section>
+        <div class="col-lg-4">
+            <div class="rounded-card p-4 latest-news-list">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="h5 mb-1">Latest News</h2>
+                        <p class="mb-0 text-muted">Latest 10 headlines from around the globe.</p>
+                    </div>
+                    <span class="badge text-bg-primary">Live</span>
+                </div>
+                <ul id="latestNewsList" class="list-group list-group-flush"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="news" class="py-5">
+    <div class="rounded-card p-4 card-no-shadow">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-8">
+                <h2 class="section-heading">Featured Coverage</h2>
+                <p class="section-subtitle">Curated analysis, breaking stories, and editorial picks to keep you informed without distraction.</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="d-flex gap-2 flex-wrap">
+                    <span class="badge text-bg-secondary">Politics</span>
+                    <span class="badge text-bg-info">Business</span>
+                    <span class="badge text-bg-success">Science</span>
+                    <span class="badge text-bg-danger">Culture</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="career" class="py-5">
+    <div class="mb-4">
+        <h2 class="section-heading">Career Opportunities</h2>
+        <p class="section-subtitle">Explore active roles at a media organization built for modern storytelling.</p>
+    </div>
+    <div id="careerCards" class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"></div>
+    <div class="text-center mt-4">
+        <a href="#about" class="btn btn-outline-primary btn-lg">View More Careers</a>
+    </div>
+</section>
+
+<section id="about" class="py-5">
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="about-panel">
+                <h2 class="section-heading">About Us</h2>
+                <p class="section-subtitle">We deliver insightful journalism with an approachable, rounded design system and clear navigation for readers on every device.</p>
+                <p>Our newsroom focuses on trustworthy storytelling, fast updates, and a positive user experience. We blend local reporting with global perspective, all wrapped in a calm, modern interface.</p>
+                <div class="mt-4">
+                    <h6 class="mb-2">Contact Details</h6>
+                    <p class="mb-1"><strong>Address:</strong> 1200 Media Avenue, Suite 600, City Center</p>
+                    <p class="mb-1"><strong>Email:</strong> hello@modernnews.example</p>
+                    <p class="mb-0"><strong>Phone:</strong> +1 (555) 321-9876</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="rounded-card overflow-hidden card-no-shadow">
+                <iframe class="map-frame" src="https://www.google.com/maps?q=new+york+city&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+    var hotNews = [
+        {
+            title: 'Global Markets Rally After Policy Update',
+            subtitle: 'Markets respond as central banks shift strategy.',
+            category: 'Business',
+            label: 'Hot',
+            image: 'https://via.placeholder.com/1200x500/1d73b9/ffffff?text=Global+Markets'
+        },
+        {
+            title: 'New Advances in Clean Energy Research',
+            subtitle: 'Scientists publish a breakthrough that could reshape power generation.',
+            category: 'Science',
+            label: 'Analysis',
+            image: 'https://via.placeholder.com/1200x500/18b0a4/ffffff?text=Clean+Energy'
+        },
+        {
+            title: 'Creative Industries Thrive in City Renewal Plan',
+            subtitle: 'Local culture and tech converge in a new urban agenda.',
+            category: 'Culture',
+            label: 'Featured',
+            image: 'https://via.placeholder.com/1200x500/ff6b35/ffffff?text=Creative+Industries'
+        }
+    ];
+
+    var latestNews = [
+        'International trade talks build momentum',
+        'City leaders launch sustainable transit blueprint',
+        'Major studio reveals next-generation streaming strategy',
+        'Health experts call for improved mental wellness access',
+        'Electric vehicle adoption hits a record high',
+        'Local startup secures growth-stage funding',
+        'Education reform debate intensifies ahead of elections',
+        'Sports championship returns to downtown arena',
+        'Tech regulation proposals move through legislature',
+        'Fashion industry embraces circular material sources'
+    ];
+
+    var careers = [
+        {title: 'Digital Content Editor', location: 'Remote / NY', salary: '$75k - $95k'},
+        {title: 'Audience Growth Manager', location: 'London / Berlin', salary: '$70k - $90k'},
+        {title: 'Visual Storytelling Lead', location: 'Los Angeles', salary: '$88k - $110k'},
+        {title: 'Product Strategist', location: 'Toronto', salary: '$82k - $105k'},
+        {title: 'Community Engagement Specialist', location: 'Austin', salary: '$65k - $78k'}
+    ];
+
+    var $carouselInner = $('#hotNewsCarousel .carousel-inner');
+    var $indicators = $('#hotNewsCarousel .carousel-indicators');
+    $.each(hotNews, function(index, item) {
+        var activeClass = index === 0 ? ' active' : '';
+        var slide = $('<div>').addClass('carousel-item' + activeClass);
+        var slideContent = $('<div class="position-relative" style="min-height: 360px; background-size: cover; background-position: center; background-repeat: no-repeat;">')
+            .css('background-image', 'linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.42)), url(' + item.image + ')')
+            .append(
+                '<div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.05));"></div>' +
+                '<div class="position-absolute bottom-0 p-4 text-white" style="z-index: 2;">' +
+                '<span class="badge bg-warning text-dark mb-3">' + item.label + '</span>' +
+                '<h3 class="fw-bold">' + item.title + '</h3>' +
+                '<p class="mb-2">' + item.subtitle + '</p>' +
+                '<span class="badge bg-primary">' + item.category + '</span>' +
+                '</div>'
+            );
+        slide.append(slideContent);
+        $carouselInner.append(slide);
+        $indicators.append('<button type="button" data-bs-target="#hotNewsCarousel" data-bs-slide-to="' + index + '"' + (index === 0 ? ' class="active" aria-current="true"' : '') + ' aria-label="Slide ' + (index + 1) + '"></button>');
+    });
+
+    var $latestList = $('#latestNewsList');
+    $.each(latestNews, function(index, headline) {
+        $latestList.append(
+            '<li class="list-group-item py-3">' +
+            '<div class="d-flex justify-content-between align-items-start">' +
+            '<div>' +
+            '<h6 class="mb-1">' + headline + '</h6>' +
+            '<small class="text-muted">' + (index + 1) + ' mins ago</small>' +
+            '</div>' +
+            '<span class="badge bg-secondary news-badge">News</span>' +
+            '</div>' +
+            '</li>'
+        );
+    });
+
+    var $careerCards = $('#careerCards');
+    $.each(careers, function(index, job) {
+        $careerCards.append(
+            '<div class="col">' +
+            '<div class="career-card p-4 h-100">' +
+            '<h5>' + job.title + '</h5>' +
+            '<p class="mb-2 text-muted">' + job.location + '</p>' +
+            '<p class="mb-3">' + job.salary + '</p>' +
+            '<button class="btn btn-outline-primary btn-sm">View Role</button>' +
+            '</div>' +
+            '</div>'
+        );
+    });
+
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+            event.preventDefault();
+            $('html, body').stop().animate({ scrollTop: target.offset().top - 90 }, 500);
+        }
+    });
+});
+</script>
 @endsection
-=======
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ModernNews | Professional Journalism</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-yellow: #FFD700;
-            --brand-blue: #0056b3;
-            --brand-black: #1a1a1a;
-            --brand-white: #ffffff;
-            --brand-gray: #f8f9fa;
-            --radius-lg: 16px;
-            --radius-md: 12px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--brand-black);
-            background-color: var(--brand-white);
-            overflow-x: hidden;
-        }
-
-        /* Flat Design Adjustments */
-        .card, .btn, .form-control, .nav-link, .badge {
-            border-radius: var(--radius-md) !important;
-            border: none;
-            box-shadow: none !important;
-        }
-
-        /* Navbar Customization */
-        .navbar {
-            background-color: var(--brand-black);
-            padding: 1rem 0;
-        }
-        .navbar-brand {
-            font-weight: 800;
-            color: var(--brand-yellow) !important;
-            font-size: 1.5rem;
-        }
-        .nav-link {
-            color: var(--brand-white) !important;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .nav-link:hover {
-            color: var(--brand-yellow) !important;
-        }
-
-        /* Parallax Sections */
-        .parallax-section {
-            position: relative;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            padding: 100px 0;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-overlay {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: var(--radius-lg);
-            width: 100%;
-        }
-
-        /* Section Backgrounds */
-        #news { background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=2000'); }
-        #career { background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=2000'); }
-        #about { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000'); }
-
-        /* Carousel Styling */
-        #hotNewsCarousel {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .carousel-item img {
-            height: 500px;
-            object-fit: cover;
-        }
-        .carousel-caption {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            bottom: 20px;
-            text-align: left;
-            left: 5%;
-            right: 5%;
-        }
-
-        /* Latest News List */
-        .latest-news-container {
-            max-height: 500px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        .latest-news-item {
-            background: var(--brand-gray);
-            transition: background 0.2s;
-            cursor: pointer;
-            border-bottom: 2px solid #eee;
-        }
-        .latest-news-item:hover {
-            background: #eef2ff;
-        }
-        .news-thumb {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-        }
-
-        /* Career List */
-        .career-card {
-            border: 2px solid var(--brand-blue);
-            background: #fff;
-            margin-bottom: 1rem;
-        }
-        .career-badge {
-            background-color: var(--brand-yellow);
-            color: var(--brand-black);
-        }
-
-        /* Map Placeholder */
-        .map-container {
-            background: #eee;
-            border-radius: var(--radius-lg);
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            border: 2px dashed #ccc;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: var(--brand-blue); border-radius: 10px; }
-
-        .btn-blue {
-            background-color: var(--brand-blue);
-            color: white;
-            font-weight: 600;
-        }
-        .btn-blue:hover {
-            background-color: #004494;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .carousel-item img { height: 300px; }
-            .latest-news-container { max-height: none; margin-top: 2rem; }
-            .parallax-section { background-attachment: scroll; padding: 50px 0; }
-            .section-overlay { padding: 1.5rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">MODERN<span style="color:white">NEWS</span></a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#news">News</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#career">Career</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#about">About Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Home Section (Slideshow + Latest News) -->
-    <section id="home" class="py-5 bg-white">
-        <div class="container">
-            <div class="row g-4">
-                <!-- Slideshow -->
-                <div class="col-lg-8">
-                    <h2 class="fw-bold mb-4 border-start border-4 border-warning ps-3">HOT TOPICS</h2>
-                    <div id="hotNewsCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" id="hotNewsItems">
-                            <!-- Dynamic Content -->
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Latest News List -->
-                <div class="col-lg-4">
-                    <h2 class="fw-bold mb-4 border-start border-4 border-primary ps-3">LATEST NEWS</h2>
-                    <div class="latest-news-container" id="latestNewsList">
-                        <!-- Dynamic Content -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section (Parallax Example) -->
-    <section id="news" class="parallax-section">
-        <div class="container">
-            <div class="section-overlay text-center">
-                <h2 class="display-5 fw-800 mb-4" style="color: var(--brand-blue);">World Class Journalism</h2>
-                <p class="lead mb-4">We deliver the most accurate and up-to-date news from around the globe, powered by independent journalists.</p>
-                <button class="btn btn-blue btn-lg px-5">Explore All Categories</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Career Section -->
-    <section id="career" class="parallax-section">
-        <div class="container">
-            <div class="section-overlay">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 mb-4 mb-lg-0">
-                        <h2 class="display-6 fw-bold mb-3">Join Our Newsroom</h2>
-                        <p class="text-muted">We are looking for creative minds, data analysts, and investigative journalists to join our growing global team.</p>
-                        <div class="bg-warning p-3 rounded-4 mb-3">
-                            <strong>Note:</strong> Remote positions available for international applicants.
-                        </div>
-                        <button class="btn btn-blue btn-lg">View More Openings</button>
-                    </div>
-                    <div class="col-lg-7">
-                        <div id="careerList">
-                            <!-- Dynamic Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section id="about" class="parallax-section mb-5">
-        <div class="container">
-            <div class="section-overlay">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2 class="fw-bold mb-4">About ModernNews</h2>
-                        <p>Founded in 2024, ModernNews has been at the forefront of digital reporting. Our mission is to provide unbiased, fact-checked information in a world of digital noise. We believe in transparency, ethics, and the power of truth.</p>
-                        <p>With over 50 bureaus worldwide, we cover everything from local politics to global tech breakthroughs.</p>
-                        <hr class="my-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-primary text-white p-3 rounded-circle me-3">
-                                <i class="bi bi-geo-alt"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-0">Headquarters</h6>
-                                <p class="mb-0 text-muted">123 Journalism Way, Manhattan, NY</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="bg-warning text-dark p-3 rounded-circle me-3">
-                                <i class="bi bi-telephone"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-0">Contact Support</h6>
-                                <p class="mb-0 text-muted">+1 (555) 000-NEWS</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 mt-4 mt-lg-0">
-                        <div class="map-container">
-                            <div class="text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-map text-primary mb-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4.5-.9v12.99l4.5.9V1.91zm1 12.99 4-1.143V1.143l-4 1.143v12.99zm-6-.1L1 15.947V1.953l4-.8V14.8z"/>
-                                </svg>
-                                <h5>Interactive Map View</h5>
-                                <p class="text-muted small">Embedded Google Maps would render here</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // 1. Generate Hot News (Carousel)
-            const hotNewsData = [
-                { title: "Future of AI in Media", desc: "How artificial intelligence is reshaping newsrooms globally.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" },
-                { title: "Global Climate Summit", desc: "Leaders gather to discuss urgent carbon reduction targets.", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" },
-                { title: "SpaceX Mars Mission Update", desc: "The next window for orbital launches has been confirmed.", img: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&q=80&w=800" }
-            ];
-
-            hotNewsData.forEach((item, index) => {
-                const activeClass = index === 0 ? 'active' : '';
-                $('#hotNewsItems').append(`
-                    <div class="carousel-item ${activeClass}">
-                        <img src="${item.img}" class="d-block w-100" alt="News">
-                        <div class="carousel-caption">
-                            <h3 class="fw-bold text-warning">${item.title}</h3>
-                            <p>${item.desc}</p>
-                        </div>
-                    </div>
-                `);
-            });
-
-            // 2. Generate Latest News (10 Items)
-            for(let i = 1; i <= 10; i++) {
-                $('#latestNewsList').append(`
-                    <div class="latest-news-item p-3 mb-2 rounded d-flex align-items-center">
-                        <img src="https://picsum.photos/seed/${i+10}/100/100" class="news-thumb me-3" alt="thumb">
-                        <div>
-                            <h6 class="mb-1 fw-bold">Breaking Headline Article #${i}</h6>
-                            <p class="mb-1 text-muted small">Brief summary of the news story for readers to preview...</p>
-                            <span class="badge bg-secondary">May ${i}, 2024</span>
-                        </div>
-                    </div>
-                `);
-            }
-
-            // 3. Generate Career Data (5 Items)
-            const jobs = [
-                { title: "Senior Investigative Journalist", type: "Full-Time", loc: "New York" },
-                { title: "Digital Content Editor", type: "Remote", loc: "London" },
-                { title: "Data Scientist (Media Analytics)", type: "Full-Time", loc: "Singapore" },
-                { title: "UI/UX Designer", type: "Contract", loc: "Berlin" },
-                { title: "Social Media Strategist", type: "Full-Time", loc: "Tokyo" }
-            ];
-
-            jobs.forEach(job => {
-                $('#careerList').append(`
-                    <div class="career-card p-3 rounded-4 d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="mb-0 fw-bold">${job.title}</h5>
-                            <span class="text-muted small">${job.loc}</span>
-                        </div>
-                        <span class="badge career-badge px-3 py-2">${job.type}</span>
-                    </div>
-                `);
-            });
-
-            // 4. Smooth Scrolling
-            $('a.nav-link').on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top - 70
-                    }, 800);
-                }
-            });
-
-            // Simple Parallax Effect on Scroll
-            $(window).scroll(function() {
-                let scrolled = $(window).scrollTop();
-                $('.parallax-section').css('background-position-y', -(scrolled * 0.1) + 'px');
-            });
-        });
-    </script>
-</body>
-</html>
->>>>>>> 8b84bd2c9b928c8283b242f23158d198938f4228
