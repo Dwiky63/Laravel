@@ -41,100 +41,185 @@ body {
 .section-subtitle {
     color: var(--brand-muted);
 }
+.latest-news-list {
+    max-height: 420px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 .latest-news-list .list-group-item {
     border: none;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.latest-news-list .list-group-item:last-child {
+    border-bottom: none;
+}
+.latest-news-list .list-group-item h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
 }
 .latest-news-list .news-badge {
     font-size: .7rem;
     text-transform: uppercase;
     letter-spacing: .08em;
 }
-.career-card {
-    border-radius: 1.4rem;
-    background: linear-gradient(135deg, rgba(255,107,53,.12), rgba(29,115,185,.1));
-    border: 1px solid rgba(29,115,185,.15);
+
+section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
 }
+
+.rounded-card,
+.about-panel,
+.career-card {
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,.04);
+}
+
+.career-card {
+    padding: 1.25rem !important;
+    min-height: 180px;
+    background: linear-gradient(135deg, rgba(255,107,53,.12), rgba(29,115,185,.1)) !important;
+    border: 1px solid rgba(29,115,185,.15) !important;
+    transition: .3s ease;
+}
+
+.career-card:hover {
+    transform: translateY(-4px);
+}
+
+.career-card h5 {
+    font-size: 1.1rem;
+    margin-bottom: .75rem;
+}
+
+.career-card p {
+    margin-bottom: .5rem;
+}
+
 .career-card .btn {
     border-radius: 999px;
 }
+
 .about-panel {
-    border-radius: 1.4rem;
-    background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,249,250,.95));
-    padding: 2rem;
+    height: 100%;
+    padding: 2rem !important;
+    background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,249,250,.95)) !important;
 }
+
 .map-frame {
     border: 0;
     width: 100%;
-    min-height: 280px;
+    height: 100%;
+    min-height: 320px;
     border-radius: 1.25rem;
 }
-@media (max-width: 767px) {
-    .nav-pills {
-        flex-wrap: wrap;
+
+#about .rounded-card {
+    height: 100%;
+    overflow: hidden;
+}
+
+#news .rounded-card {
+    padding: 2rem !important;
+}
+@media (max-width: 768px) {
+    .carousel-item,
+    .carousel-item .position-relative {
+        height: 250px;
+    }
+    
+    .latest-news-list {
+        max-height: none;
+        overflow: visible;
+        margin-top: 1.5rem;
+    }
+    
+    .section-heading {
+        font-size: 1.75rem;
+    }
+    
+    .display-5 {
+        font-size: 2rem;
+    }
+    
+    section {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .career-card {
+        min-height: auto;
+    }
+
+    .map-frame {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 991px) {
+    .carousel-item,
+    .carousel-item .position-relative {
+        height: 360px;
     }
 }
 </style>
 
 <section id="home" class="py-5">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
-        <div>
+    <div class="container">
+        <div class="mb-5">
             <span class="badge text-bg-warning rounded-pill mb-3">Trusted news daily</span>
             <h1 class="display-5 fw-bold section-heading">Modern News for Every Story</h1>
             <p class="lead section-subtitle">A polished, flat design news landing page with live-style headlines, career highlights, and company profile details.</p>
         </div>
-        <nav class="nav nav-pills align-self-stretch">
-            <a class="nav-link active" href="#home">Home</a>
-            <a class="nav-link" href="#news">News</a>
-            <a class="nav-link" href="#career">Career</a>
-            <a class="nav-link" href="#about">About Us</a>
-        </nav>
-    </div>
 
-    <div class="row g-4">
-        <div class="col-lg-8">
-            <div id="hotNewsCarousel" class="carousel slide rounded-card overflow-hidden card-no-shadow" data-bs-ride="carousel">
-                <div class="carousel-indicators"></div>
-                <div class="carousel-inner"></div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="rounded-card p-4 latest-news-list">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h2 class="h5 mb-1">Latest News</h2>
-                        <p class="mb-0 text-muted">Latest 10 headlines from around the globe.</p>
-                    </div>
-                    <span class="badge text-bg-primary">Live</span>
+        <div class="row g-4 align-items-stretch">
+            <div class="col-12 col-lg-9">
+                <div id="hotNewsCarousel" class="carousel slide rounded-card overflow-hidden card-no-shadow" data-bs-ride="carousel">
+                    <div class="carousel-indicators"></div>
+                    <div class="carousel-inner"></div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#hotNewsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <ul id="latestNewsList" class="list-group list-group-flush"></ul>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="rounded-card p-4 latest-news-list">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h2 class="h5 mb-1">Latest News</h2>
+                            <p class="mb-0 text-muted">Latest 4 headlines from around the globe.</p>
+                        </div>
+                        <span class="badge text-bg-primary">Live</span>
+                    </div>
+                    <ul id="latestNewsList" class="list-group list-group-flush"></ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <section id="news" class="py-5">
-    <div class="rounded-card p-4 card-no-shadow">
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-8">
-                <h2 class="section-heading">Featured Coverage</h2>
-                <p class="section-subtitle">Curated analysis, breaking stories, and editorial picks to keep you informed without distraction.</p>
-            </div>
-            <div class="col-lg-4">
-                <div class="d-flex gap-2 flex-wrap">
-                    <span class="badge text-bg-secondary">Politics</span>
-                    <span class="badge text-bg-info">Business</span>
-                    <span class="badge text-bg-success">Science</span>
-                    <span class="badge text-bg-danger">Culture</span>
+    <div class="container">
+        <div class="rounded-card">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="section-heading">Featured Coverage</h2>
+                    <p class="section-subtitle">Curated analysis, breaking stories, and editorial picks to keep you informed without distraction.</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex gap-2 flex-wrap">
+                        <span class="badge text-bg-secondary">Politics</span>
+                        <span class="badge text-bg-info">Business</span>
+                        <span class="badge text-bg-success">Science</span>
+                        <span class="badge text-bg-danger">Culture</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,34 +227,38 @@ body {
 </section>
 
 <section id="career" class="py-5">
-    <div class="mb-4">
-        <h2 class="section-heading">Career Opportunities</h2>
-        <p class="section-subtitle">Explore active roles at a media organization built for modern storytelling.</p>
-    </div>
-    <div id="careerCards" class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"></div>
-    <div class="text-center mt-4">
-        <a href="#about" class="btn btn-outline-primary btn-lg">View More Careers</a>
+    <div class="container">
+        <div class="mb-4">
+            <h2 class="section-heading">Career Opportunities</h2>
+            <p class="section-subtitle">Explore active roles at a media organization built for modern storytelling.</p>
+        </div>
+        <div id="careerCards" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3"></div>
+        <div class="text-center mt-5">
+            <a href="#about" class="btn btn-outline-primary btn-lg">View More Careers</a>
+        </div>
     </div>
 </section>
 
 <section id="about" class="py-5">
-    <div class="row g-4">
-        <div class="col-lg-6">
-            <div class="about-panel">
-                <h2 class="section-heading">About Us</h2>
-                <p class="section-subtitle">We deliver insightful journalism with an approachable, rounded design system and clear navigation for readers on every device.</p>
-                <p>Our newsroom focuses on trustworthy storytelling, fast updates, and a positive user experience. We blend local reporting with global perspective, all wrapped in a calm, modern interface.</p>
-                <div class="mt-4">
-                    <h6 class="mb-2">Contact Details</h6>
-                    <p class="mb-1"><strong>Address:</strong> 1200 Media Avenue, Suite 600, City Center</p>
-                    <p class="mb-1"><strong>Email:</strong> hello@modernnews.example</p>
-                    <p class="mb-0"><strong>Phone:</strong> +1 (555) 321-9876</p>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="about-panel">
+                    <h2 class="section-heading">About Us</h2>
+                    <p class="section-subtitle">We deliver insightful journalism with an approachable, rounded design system and clear navigation for readers on every device.</p>
+                    <p>Our newsroom focuses on trustworthy storytelling, fast updates, and a positive user experience. We blend local reporting with global perspective, all wrapped in a calm, modern interface.</p>
+                    <div class="mt-4">
+                        <h6 class="mb-2">Contact Details</h6>
+                        <p class="mb-1"><strong>Address:</strong> 1200 Media Avenue, Suite 600, City Center</p>
+                        <p class="mb-1"><strong>Email:</strong> hello@modernnews.example</p>
+                        <p class="mb-0"><strong>Phone:</strong> +1 (555) 321-9876</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="rounded-card overflow-hidden card-no-shadow">
-                <iframe class="map-frame" src="https://www.google.com/maps?q=new+york+city&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            <div class="col-lg-6">
+                <div class="rounded-card overflow-hidden">
+                    <iframe class="map-frame" src="https://www.google.com/maps?q=new+york+city&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </div>
@@ -245,15 +334,15 @@ $(function() {
     });
 
     var $latestList = $('#latestNewsList');
-    $.each(latestNews, function(index, headline) {
+    $.each(latestNews.slice(0, 4), function(index, headline) {
         $latestList.append(
-            '<li class="list-group-item py-3">' +
-            '<div class="d-flex justify-content-between align-items-start">' +
-            '<div>' +
+            '<li class="list-group-item">' +
+            '<div class="d-flex justify-content-between align-items-start gap-2">' +
+            '<div style="flex: 1;">' +
             '<h6 class="mb-1">' + headline + '</h6>' +
             '<small class="text-muted">' + (index + 1) + ' mins ago</small>' +
             '</div>' +
-            '<span class="badge bg-secondary news-badge">News</span>' +
+            '<span class="badge bg-secondary news-badge flex-shrink-0">News</span>' +
             '</div>' +
             '</li>'
         );
