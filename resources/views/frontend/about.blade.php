@@ -14,9 +14,9 @@
    </div>
 
    <div class="bg-light py-5">
-        <div class="continer">
+        <div class="container">
             <div class="row g-4 text-center>
-                <div class="col-6 col-md-3">
+                <div class= "col-6 col-md-3">
                     <div class="stat-card">
                         <div class="stat-number"> 50+ </div>
                         <div class="stat-label"> global beraus </div>
@@ -68,7 +68,7 @@
              <!-- image-->
               <div class="col-lg-6">
                 <img
-                    src=Dual-Channel-Relay-Module.jpg
+                    src= "{{ asset('images/Dual-Channel-Relay-Module.jpg') }}"
                     alt="our news"
                     class="img-fluid"
                     style="border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.15);"
