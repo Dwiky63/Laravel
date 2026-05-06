@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', 'Modern News Media')
+@section('title', 'Home')
 
 @section('content')
 <style>
@@ -360,14 +360,6 @@ $(function() {
             '</div>' +
             '</div>'
         );
-    });
-
-    $('a[href^="#"]').on('click', function(event) {
-        var target = $(this.getAttribute('href'));
-        if (target.length) {
-            event.preventDefault();
-            $('html, body').stop().animate({ scrollTop: target.offset().top - 90 }, 500);
-        }
     });
 });
 </script>
