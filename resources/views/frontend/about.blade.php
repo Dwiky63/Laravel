@@ -301,7 +301,7 @@
     <div class="container">
         <p class="hero-label">Who We Are</p>
         <h1>About <span>Modern News</span></h1>
-        <p>We are a modern media company dedicated to delivering insightful journalism, breaking stories, and trusted news coverage from around the globe. Our mission is to inform, engage, and empower readers with quality storytelling.</p>
+        <p>Relay adalah komponen elektronik yang seringkali terlihat sepele tetapi memiliki peran yang sangat penting dalam berbagai sistem elektrik dan elektronik. Relay berfungsi sebagai sakelar elektromagnetik yang dapat mengontrol aliran listrik pada rangkaian. Dalam artikel ini, kita akan membahas lebih lanjut tentang fungsi relay, jenis-jenis relay yang berbeda, prinsip dan cara kerjanya dalam berbagai aspek kehidupan.</p>
     </div>
 </section>
 
@@ -343,9 +343,9 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <h2>Our Story</h2>
-                <p>Modern News was founded with a simple yet powerful mission: to provide accurate, timely, and compelling journalism that matters. We believe that quality news coverage is essential for an informed society and engaged citizens.</p>
-                <p>Over the years, we've grown from a small team of passionate journalists into a global media organization with bureaus in major cities around the world. Our commitment to editorial excellence, integrity, and reader engagement remains at the heart of everything we do.</p>
-                <p>We leverage the latest technology and digital platforms to reach our audiences wherever they are, while maintaining our dedication to in-depth reporting and investigative journalism. Every story we tell is backed by rigorous research and ethical reporting standards.</p>
+                <p>Yang dimaksud relay adalah sebuah komponen elektronika yang berbentuk sakelar yang dioperasikan dengan listrik, dilengkapi 2 bagian diantaranya elektromagnet (Coil) dan mekanikal (Switch). Dimana komponen tersebut memanfaatkan prinsip elektromagnetik untuk dapat menggerakkan sakelar sehingga dapat menghantarkan arus listrik.</p>
+                <p>Menurut Wikipedia, Relai adalah suatu peranti yang menggunakan elektromagnet untuk mengoperasikan seperangkat kontak sakelar. Susunan paling sederhana terdiri dari kumparan kawat penghantar yang dililit pada inti besi.</p>
+                <p>Lantas adakah perbedaan antara relay dengan sakelar? Sebenarnya cukup mudah membedakan diantara keduanya. Relay adalah komponen yang dapat dijalankan hanya dengan tenaga listrik sedangkan sakelar adalah komponen listrik yang digunakan untuk memutus dan menghubungkan aliran listrik.</p>
                 <a href="{{ route('news') }}" class="btn cta-btn" style="background: var(--brand-primary); color: #fff; margin-top: 1.5rem;">Read Latest News</a>
             </div>
             <div class="col-lg-6">
@@ -365,14 +365,14 @@
                 <div class="vision-mission-card">
                     <div class="vm-icon">👁️</div>
                     <h3>Our Vision</h3>
-                    <p>To be the most trusted and innovative media company, delivering news and stories that inform, inspire, and empower people globally. We envision a world where quality journalism is accessible to everyone and drives positive change.</p>
+                    <p>Menjadi perusahaan manajemen dan komersil yang diakui sebagai spesialis pemompaan dan pengelolaan air terkemuka di Indonesia, serta mampu bertahan sebagai pemasok utama secara global.</p>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="vision-mission-card">
                     <div class="vm-icon">🎯</div>
                     <h3>Our Mission</h3>
-                    <p>To tell compelling, accurate, and impactful stories that shed light on important issues and connect people across the globe. We are committed to editorial independence, ethical reporting, and serving the public interest through outstanding journalism.</p>
+                    <p> Memberikan jasa terbaik melalui pendekatan operasional yang mengutamakan keselamatan dan tidak pernah mengkompromikan kualitas.</p>
                 </div>
             </div>
         </div>
@@ -382,36 +382,45 @@
 <!-- Team Section -->
 <section class="team-section">
     <div class="container">
-        <h2>Meet Our Team</h2>
+        <h2>Komponen Listrik</h2>
         <p class="team-subtitle">Meet the talented journalists and professionals behind Modern News</p>
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
                 <div class="team-card">
-                    <div class="team-image">📸</div>
+                    <img
+                        src="{{ asset('images/image_1.png') }}"
+                        class="team-image"
+                        alt="Sarah Johnson"> 
                     <div class="team-info">
-                        <div class="team-name">Sarah Johnson</div>
+                        <div class="team-name">Kontaktor</div>
                         <div class="team-position">Chief Editor</div>
-                        <p style="color: var(--brand-muted); font-size: 0.95rem;">Award-winning journalist with 15+ years of experience in investigative reporting.</p>
+                        <p style="color: var(--brand-muted); font-size: 0.95rem;">Kontaktor (magnetic contactor) adalah sakelar elektromagnetik berkapasitas daya tinggi yang digunakan untuk menyambung atau memutuskan arus listrik beban besar, seperti motor, heater, dan sistem pencahayaan.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="team-card">
-                    <div class="team-image">📸</div>
+                    <img
+                        src="{{ asset('images/image_2.png') }}"
+                        class="team-image"
+                        alt="Michael Chen">
                     <div class="team-info">
-                        <div class="team-name">Michael Chen</div>
+                        <div class="team-name">RCBO</div>
                         <div class="team-position">Managing Editor</div>
-                        <p style="color: var(--brand-muted); font-size: 0.95rem;">Digital media expert focused on innovation and audience engagement strategies.</p>
+                        <p style="color: var(--brand-muted); font-size: 0.95rem;">RCBO (Residual Current Breaker with Overcurrent) adalah perangkat proteksi listrik canggih yang menggabungkan fungsi MCB (beban lebih & korsleting) dan ELCB/RCCB (arus bocor/kesetrum) dalam satu komponen.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="team-card">
-                    <div class="team-image">📸</div>
+                    <img
+                        src="{{ asset('images/image_3.png') }}"
+                        class="team-image"
+                        alt="Emma Rodriguez">
                     <div class="team-info">
-                        <div class="team-name">Emma Rodriguez</div>
+                        <div class="team-name">RCCB</div>
                         <div class="team-position">Senior Reporter</div>
-                        <p style="color: var(--brand-muted); font-size: 0.95rem;">Dedicated to breaking news coverage and in-depth feature stories worldwide.</p>
+                        <p style="color: var(--brand-muted); font-size: 0.95rem;">RCCB (Residual Current Circuit Breaker) adalah perangkat keselamatan listrik vital yang memutuskan aliran listrik secara otomatis saat mendeteksi kebocoran arus ke tanah (ground fault).</p>
                     </div>
                 </div>
             </div>
