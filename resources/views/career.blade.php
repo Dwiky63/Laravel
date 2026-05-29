@@ -1,6 +1,4 @@
-@extends('layouts.frontend')
-
-@section('title', 'Career - Join Our Team')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -42,7 +40,6 @@
         padding: 80px 0 60px;
         position: relative;
         overflow: hidden;
-        margin-top: 80px;
     }
 
     .hero-section::before {
@@ -584,7 +581,6 @@
         width: 90%;
         box-shadow: var(--shadow-lg);
         animation: slideUp 0.4s ease-out;
-        position: relative;
     }
 
     @keyframes slideUp {
@@ -1254,4 +1250,5 @@
     // Render initial jobs
     renderJobs();
 </script>
+
 @endsection

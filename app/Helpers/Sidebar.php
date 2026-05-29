@@ -75,6 +75,15 @@ class Sidebar
           'ajax_load' => false,
           'childrens' => []
         ],
+        [
+          'name' => 'Career',
+          'icon' => 'ti ti-brifcase',
+          'key' => 'career',
+          'base_key' => 'career',
+          'visibility' => true,
+          'ajax_load' => false,
+          'childrens' => []
+        ],
       ];
   }
 

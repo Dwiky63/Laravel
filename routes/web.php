@@ -49,4 +49,13 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin'], function ()
     Route::get('my-account', [UserController::class, 'profile']);
     Route::post('update-profile', [UserController::class, 'updateProfile']);
 
+    Route::resource ('career', CareerController::class);
+    Route::get('career-api', [CareerController::class, 'indexApi'])->name('career.listapi');
+    Route::get('career-export-pdf-default', [CareerController::class, 'export
+Pdf'])->name('career.export-pdf-default');
+    Route::get('career-export-excel-default', [CareerController::class, 'export
+Excel'])->name('career.export-excel-default');
+    Route::post('career-import-excel-default', [CareerController::class, 'import
+Excel'])->name('career.import-excel-default');
+
 });
