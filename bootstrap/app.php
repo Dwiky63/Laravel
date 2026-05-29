@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
     })
+    ->withCommands([
+        Idev\EasyAdmin\app\Console\Commands\ControllerMaker::class,
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

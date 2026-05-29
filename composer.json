@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "idevsmg/easyadmin": "dev-main",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9"
     },
@@ -27,7 +28,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Idev\\EasyAdmin\\": "vendor/idevsmg/easyadmin/src/"
         }
     },
     "scripts": {

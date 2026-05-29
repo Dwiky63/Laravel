@@ -46,7 +46,7 @@
                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link {{ request()->routeIs('news') ? 'active' : '' }}" href="{{ route('news') }}">News</a>
+                       <a class="nav-link" href="{{ route('frontendnews') }}">News</a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link {{ request()->routeIs('career') ? 'active' : '' }}" href="{{ route('career') }}">Career</a>

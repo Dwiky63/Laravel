@@ -15,8 +15,7 @@
 
            <h1 class="display-4">{{ $news->title }}</h1>
            <p class="text-muted">
-               Published on {{ $news->created_at->format('d M Y') }} |
-               Author: <strong>{{ $news->author->name }}</strong>
+               Published on {{ date("Y-m-d ", strtotime( $news->created_at)) }} |
            </p>
            <hr>
            <img src="https://via.placeholder.com/800x400" class="img-fluid rounded mb-4" alt="Featured Image">
@@ -26,7 +25,7 @@
            </div>
 
            <div class="mt-5">
-               <a href="{{ route('news.index') }}" class="btn btn-secondary">Back to News List</a>
+               <a href="{{ route('frontendnews') }}" class="btn btn-secondary">Back to News List</a>
            </div>
        </div>
    </div>
