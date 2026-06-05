@@ -11,7 +11,7 @@ class FrontedNewsController extends Controller
    {
        // Mengambil semua berita, diurutkan dari yang terbaru
        // Eager Loading 'author' untuk mengoptimalkan query relasi created_by
-       $allNews = News::orderBy('created_at', 'desc')->get();
+       $allNews = News::with('author')->orderBy('created_at', 'desc')->get();
 
        return view('frontend.news.index', compact('allNews'));
    }
@@ -19,7 +19,7 @@ class FrontedNewsController extends Controller
    public function show($id)
    {
        // Mencari berita berdasarkan ID, jika tidak ada akan muncul error 404
-       $news = News::findOrFail($id);
+       $news = News::with('author')->findOrFail($id);
 
        return view('frontend.news.show', compact('news'));
    }

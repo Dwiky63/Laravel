@@ -688,7 +688,7 @@ footer {
                                                         
                                                         <div class="news-card-meta">
                                                             <span>📅 {{ $item->created_at->format('d M Y') }}</span>
-                                                            <span>✍️ {{ $item->author->name ?? 'Admin' }}</span>
+                                                            <span>✍️ {{ $item->author?->name ?? 'Admin' }}</span>
                                                         </div>
                                                         
                                                         <a href="{{ route('frontendnews.show', $item->id) }}" class="news-card-btn">

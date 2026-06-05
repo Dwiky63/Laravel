@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/product', [ProductController::class, 'index'])->name('product');
-Route::get('/career', [CareerController::class, 'index'])->name('career');
+Route::get('/career', [CareerController::class, 'frontendIndex'])->name('career');
 Route::get('/news', [FrontedNewsController::class, 'index'])->name('frontendnews');
 Route::get('/news/{id}', [FrontedNewsController::class, 'show'])->name('frontendnews.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

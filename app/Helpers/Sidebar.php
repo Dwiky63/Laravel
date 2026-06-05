@@ -35,7 +35,7 @@ class Sidebar
   public function menus(){
     $role = "admin";
     if(config('idev.enable_role',true)){
-      $role = Auth::user()->role->name;
+      $role = Auth::user()->role?->name ?? 'admin';
     }
     return
       [

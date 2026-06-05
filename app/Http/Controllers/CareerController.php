@@ -23,12 +23,12 @@ class CareerController extends DefaultController
         $this->actionButtons = ['btn_edit', 'btn_show', 'btn_delete'];
 
         $this->tableHeaders = [
-                    ['name' => 'no', 'colom' => '#', 'order' => false],
-                    ['name' => 'title', 'colom' => 'Job Title', 'order' => false],
-                    ['name' => 'department', 'colom' => 'Department', 'order' => false],
-                    ['name' => 'type', 'colom' => 'Job Type', 'order' => false],
-                    ['name' => 'salary', 'colom' => 'Salary', 'order' => false],
-                    ['name' => 'status', 'colom' => 'Status', 'order' => false],
+                    ['name' => 'no', 'column' => '#', 'order' => false],
+                    ['name' => 'title', 'column' => 'Job Title', 'order' => false],
+                    ['name' => 'department', 'column' => 'Department', 'order' => false],
+                    ['name' => 'type', 'column' => 'Job Type', 'order' => false],
+                    ['name' => 'salary', 'column' => 'Salary', 'order' => false],
+                    ['name' => 'status', 'column' => 'Status', 'order' => false],
 
         ];
 
@@ -43,7 +43,7 @@ class CareerController extends DefaultController
     public function frontendIndex()
     {
         $careers = Career::where('status','open')->latest()->get();
-        return view('frontend.careers', compact('careers'));
+        return view('frontend.career', compact('careers'));
     }
 
 
