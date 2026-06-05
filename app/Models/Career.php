@@ -11,7 +11,7 @@ class Career extends Model
 
     protected $table = 'careers';
     protected $primaryKey = 'id';
-    protected $fillable = [];
+    protected $fillable = ['title', 'department', 'location', 'type', 'salary', 'description', 'requirements', 'status'];
     protected $appends = ['btn_delete', 'btn_edit', 'btn_show'];
     
     protected $casts = [

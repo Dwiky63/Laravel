@@ -856,20 +856,20 @@
 
             <div class="stats-container">
                 <div class="stat-card">
-                    <span class="stat-number" id="openRolesCount">50+</span>
+                    <span class="stat-number">{{ $careers->count() }}</span>
                     <span class="stat-label">Open Roles</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" id="departmentsCount">12</span>
+                    <span class="stat-number">{{ $careers->pluck('department')->filter()->unique()->count() }}</span>
                     <span class="stat-label">Departments</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" id="countriesCount">25+</span>
-                    <span class="stat-label">Countries</span>
+                    <span class="stat-number">{{ $careers->pluck('type')->filter()->unique()->count() }}</span>
+                    <span class="stat-label">Job Types</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" id="employeesCount">5K+</span>
-                    <span class="stat-label">Team Members</span>
+                    <span class="stat-number">{{ $careers->pluck('location')->filter()->unique()->count() }}</span>
+                    <span class="stat-label">Locations</span>
                 </div>
             </div>
         </div>
@@ -1006,108 +1006,21 @@
 <div class="toast" id="toast"></div>
 
 <script>
-    // Sample Jobs Data
-    const jobsData = [
-        {
-            id: 1,
-            title: 'Senior Product Manager',
-            company: 'Our Company',
-            department: 'Engineering',
-            type: 'Full-Time',
-            location: 'New York, USA',
-            salary: '$120K - $150K',
-            description: 'Lead our product strategy and vision. Work with cross-functional teams to deliver exceptional products.',
-            badges: ['Full-Time', 'Remote']
-        },
-        {
-            id: 2,
-            title: 'UX/UI Designer',
-            company: 'Our Company',
-            department: 'Design',
-            type: 'Full-Time',
-            location: 'San Francisco, USA',
-            salary: '$100K - $130K',
-            description: 'Create beautiful and intuitive user experiences. Design for millions of users worldwide.',
-            badges: ['Full-Time']
-        },
-        {
-            id: 3,
-            title: 'Frontend Engineer',
-            company: 'Our Company',
-            department: 'Engineering',
-            type: 'Remote',
-            location: 'Remote',
-            salary: '$110K - $145K',
-            description: 'Build responsive and performant web applications using modern frameworks and technologies.',
-            badges: ['Remote', 'Full-Time']
-        },
-        {
-            id: 4,
-            title: 'Marketing Manager',
-            company: 'Our Company',
-            department: 'Marketing',
-            type: 'Full-Time',
-            location: 'London, UK',
-            salary: '$90K - $120K',
-            description: 'Drive marketing strategies and campaigns to reach and engage our global audience.',
-            badges: ['Full-Time']
-        },
-        {
-            id: 5,
-            title: 'Data Scientist',
-            company: 'Our Company',
-            department: 'Engineering',
-            type: 'Full-Time',
-            location: 'Berlin, Germany',
-            salary: '$115K - $150K',
-            description: 'Analyze complex data and build machine learning models to drive business insights.',
-            badges: ['Full-Time', 'Remote']
-        },
-        {
-            id: 6,
-            title: 'Business Development',
-            company: 'Our Company',
-            department: 'Sales',
-            type: 'Full-Time',
-            location: 'Singapore',
-            salary: '$95K - $130K',
-            description: 'Identify new opportunities and build strategic partnerships to accelerate growth.',
-            badges: ['Full-Time']
-        },
-        {
-            id: 7,
-            title: 'HR Specialist',
-            company: 'Our Company',
-            department: 'HR',
-            type: 'Part-Time',
-            location: 'Remote',
-            salary: '$60K - $80K',
-            description: 'Support our people operations and help build an amazing company culture.',
-            badges: ['Part-Time', 'Remote']
-        },
-        {
-            id: 8,
-            title: 'DevOps Engineer',
-            company: 'Our Company',
-            department: 'Engineering',
-            type: 'Full-Time',
-            location: 'Tokyo, Japan',
-            salary: '$105K - $140K',
-            description: 'Build and maintain scalable infrastructure and deployment pipelines.',
-            badges: ['Remote', 'Full-Time']
-        },
-        {
-            id: 9,
-            title: 'Content Writer',
-            company: 'Our Company',
-            department: 'Marketing',
-            type: 'Part-Time',
-            location: 'Remote',
-            salary: '$50K - $70K',
-            description: 'Create engaging and compelling content that resonates with our audience.',
-            badges: ['Part-Time', 'Remote']
-        }
-    ];
+@php
+    $careersJson = $careers->map(function($c) {
+        return [
+            'id'          => $c->id,
+            'title'       => $c->title,
+            'department'  => $c->department ?? '-',
+            'type'        => $c->type ?? '-',
+            'location'    => $c->location ?? '-',
+            'salary'      => $c->salary ?? '-',
+            'description' => $c->description ?? '',
+        ];
+    });
+@endphp
+    // Data dari database
+    const jobsData = @json($careersJson);
 
     let currentPage = 1;
     const itemsPerPage = 6;
@@ -1132,19 +1045,26 @@
         const endIndex = startIndex + itemsPerPage;
         const paginatedJobs = filteredJobs.slice(startIndex, endIndex);
 
+        if (paginatedJobs.length === 0) {
+            jobsGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-light)">
+                <div style="font-size:3rem;margin-bottom:16px">📋</div>
+                <h3 style="margin-bottom:8px">Belum Ada Lowongan</h3>
+                <p>Silakan cek kembali nanti.</p>
+            </div>`;
+            return;
+        }
+
         jobsGrid.innerHTML = paginatedJobs.map(job => `
             <div class="job-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">${job.title}</h3>
-                        <p class="job-company">${job.company}</p>
+                        <p class="job-company">${job.department}</p>
                     </div>
                 </div>
 
                 <div class="job-badges">
-                    ${job.badges.map(badge => `
-                        <span class="badge ${getBadgeClass(badge)}">${badge}</span>
-                    `).join('')}
+                    <span class="badge ${getBadgeClass(job.type)}">${job.type}</span>
                 </div>
 
                 <div class="job-meta">
@@ -1158,7 +1078,7 @@
                     </div>
                 </div>
 
-                <p class="job-description">${job.description}</p>
+                <p class="job-description">${job.description || 'Lihat detail posisi ini.'}</p>
 
                 <button class="btn-apply" onclick="openApplyModal('${job.title}')">Apply Now</button>
             </div>
@@ -1172,9 +1092,10 @@
         const jobType = document.getElementById('jobTypeFilter').value;
 
         filteredJobs = jobsData.filter(job => {
-            const matchesSearch = job.title.toLowerCase().includes(searchText);
-            const matchesDept = !department || job.department === department;
-            const matchesType = !jobType || job.badges.includes(jobType);
+            const matchesSearch = job.title.toLowerCase().includes(searchText) ||
+                                  (job.department && job.department.toLowerCase().includes(searchText));
+            const matchesDept = !department || (job.department && job.department.toLowerCase().includes(department.toLowerCase()));
+            const matchesType = !jobType || (job.type && job.type.toLowerCase().includes(jobType.toLowerCase()));
 
             return matchesSearch && matchesDept && matchesType;
         });

@@ -23,13 +23,12 @@ class CareerController extends DefaultController
         $this->actionButtons = ['btn_edit', 'btn_show', 'btn_delete'];
 
         $this->tableHeaders = [
-                    ['name' => 'no', 'column' => '#', 'order' => false],
-                    ['name' => 'title', 'column' => 'Job Title', 'order' => false],
-                    ['name' => 'department', 'column' => 'Department', 'order' => false],
-                    ['name' => 'type', 'column' => 'Job Type', 'order' => false],
-                    ['name' => 'salary', 'column' => 'Salary', 'order' => false],
-                    ['name' => 'status', 'column' => 'Status', 'order' => false],
-
+                    ['name' => 'no',         'column' => '#',          'order' => false],
+                    ['name' => 'Job Title',  'column' => 'title',      'order' => false],
+                    ['name' => 'Department', 'column' => 'department',  'order' => false],
+                    ['name' => 'Job Type',   'column' => 'type',       'order' => false],
+                    ['name' => 'Salary',     'column' => 'salary',     'order' => false],
+                    ['name' => 'Status',     'column' => 'status',     'order' => false],
         ];
 
 
