@@ -13,6 +13,11 @@ class News extends Model
     protected $primaryKey = 'id';
     protected $fillable = ["title","content","image","created_by"];
     protected $appends = ['btn_delete', 'btn_edit', 'btn_show'];
+    
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
 
 
     public function getBtnDeleteAttribute()
@@ -42,21 +47,9 @@ class News extends Model
                 </button>";
         return $html;
     }
-    
 
-    public function getUpdatedAtAttribute($value)
+    public function author()
     {
-        return $value ? date("Y-m-d H:i:s", strtotime($value)) : "-";
+        return $this->belongsTo(User::class, 'created_by');
     }
-
-
-    public function getCreatedAtAttribute($value)
-    {
-        return $value ? date("Y-m-d H:i:s", strtotime($value)) : "-";
-    }
-
-        public function author()
-        {
-            return $this->belongsTo(User::class, 'created_by');
-        }
 }

@@ -23,9 +23,13 @@ class CareerController extends DefaultController
         $this->actionButtons = ['btn_edit', 'btn_show', 'btn_delete'];
 
         $this->tableHeaders = [
-                    ['name' => 'No', 'column' => '#', 'order' => true], 
-                    ['name' => 'Created at', 'column' => 'created_at', 'order' => true],
-                    ['name' => 'Updated at', 'column' => 'updated_at', 'order' => true],
+                    ['name' => 'no', 'colom' => '#', 'order' => false],
+                    ['name' => 'title', 'colom' => 'Job Title', 'order' => false],
+                    ['name' => 'department', 'colom' => 'Department', 'order' => false],
+                    ['name' => 'type', 'colom' => 'Job Type', 'order' => false],
+                    ['name' => 'salary', 'colom' => 'Salary', 'order' => false],
+                    ['name' => 'status', 'colom' => 'Status', 'order' => false],
+
         ];
 
 
@@ -36,11 +40,17 @@ class CareerController extends DefaultController
         ];
     }
 
+    public function frontendIndex()
+    {
+        $careers = Career::where('status','open')->latest()->get();
+        return view('frontend.careers', compact('careers'));
+    }
 
-    protected function fields($mode = "create", $id = '-')
+
+    protected function fields($mode = "create", $id = null)
     {
         $edit = null;
-        if ($id ) {
+        if ($id && $id !== '-') {
             $edit = $this->modelClass::find($id);
             
         }
@@ -71,7 +81,7 @@ class CareerController extends DefaultController
                 'name' => 'type',
                 'class' => 'col-md-6 my-2',
                 'required' => $this->flagRules('type', $id),
-                'value' => isset($edit)? $edit->title : '',
+                'value' => isset($edit)? $edit->type : '',
                 'options' => [
                     ['value' => '', 'text' => 'pilih type'],
                     ['value' => 'full-time', 'text' => 'full-time'],
@@ -116,6 +126,14 @@ class CareerController extends DefaultController
     protected function rules($id = null)
     {
         $rules = [
+            'title' => 'required|string|max:255',
+            'department' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'type' => 'required|string|max:255',
+            'salary' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'requirement' => 'nullable|string',
+            'status' => 'required|in:open,closed',
         ];
 
         return $rules;

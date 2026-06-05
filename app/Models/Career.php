@@ -9,10 +9,15 @@ class Career extends Model
 {
     use HasFactory;
 
-    protected $table = 'career';
+    protected $table = 'careers';
     protected $primaryKey = 'id';
     protected $fillable = [];
     protected $appends = ['btn_delete', 'btn_edit', 'btn_show'];
+    
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
 
 
     public function getBtnDeleteAttribute()
@@ -41,17 +46,5 @@ class Career extends Model
                 <i class='ti ti-eye'></i>
                 </button>";
         return $html;
-    }
-    
-
-    public function getUpdatedAtAttribute($value)
-    {
-        return $value ? date("Y-m-d H:i:s", strtotime($value)) : "-";
-    }
-
-
-    public function getCreatedAtAttribute($value)
-    {
-        return $value ? date("Y-m-d H:i:s", strtotime($value)) : "-";
     }
 }
