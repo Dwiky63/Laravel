@@ -11,6 +11,7 @@ use Idev\EasyAdmin\app\Http\Controllers\UserController;
 use Idev\EasyAdmin\app\Http\Controllers\AuthController;
 use Idev\EasyAdmin\app\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,6 +21,15 @@ Route::get('/career', [CareerController::class, 'frontendIndex'])->name('career'
 Route::get('/news', [FrontedNewsController::class, 'index'])->name('frontendnews');
 Route::get('/news/{id}', [FrontedNewsController::class, 'show'])->name('frontendnews.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+// Dynamic fallback route for storage files when symbolic link is not present
+Route::get('/storage/{path}', function ($path) {
+    $path = str_replace('../', '', $path); // simple path traversal protection
+    if (!Storage::disk('public')->exists($path)) {
+        abort(404);
+    }
+    return response()->file(Storage::disk('public')->path($path));
+})->where('path', '.*');
 
 Route::get('/admin', [AuthController::class, 'login'])->name('login')->middleware('web');
 
