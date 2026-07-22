@@ -21,6 +21,23 @@ class FrontedNewsController extends Controller
        // Mencari berita berdasarkan ID, jika tidak ada akan muncul error 404
        $news = News::with('author')->findOrFail($id);
 
-       return view('frontend.news.show', compact('news'));
+       // Berita sebelumnya (ID lebih kecil / lebih lama)
+       $prevNews = News::where('id', '<', $id)
+                       ->orderBy('id', 'desc')
+                       ->first();
+
+       // Berita selanjutnya (ID lebih besar / lebih baru)
+       $nextNews = News::where('id', '>', $id)
+                       ->orderBy('id', 'asc')
+                       ->first();
+
+       // Berita terkait: 3 berita terbaru selain berita yang sedang dibuka
+       $relatedNews = News::with('author')
+                          ->where('id', '!=', $id)
+                          ->orderBy('created_at', 'desc')
+                          ->take(3)
+                          ->get();
+
+       return view('frontend.news.show', compact('news', 'prevNews', 'nextNews', 'relatedNews'));
    }
 }

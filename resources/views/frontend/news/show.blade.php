@@ -157,36 +157,51 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="row g-3">
+
+                <!-- Sebelumnya -->
                 <div class="col-6">
-                    <a
-                        href="{{route('frontendnews')}}"
-                        class="card border-0 shadow-sm rounded-3 text-decoration-none h-100 p-3 d-block"
-                        style="transition:background 0.3s;"
-                        onmouseover="this.style.background='#f8f9fa'"
-                        onmouseout="this.style.background='white'"
-                    >
-                        <small class="text-muted d-block mb-1">&larr; sebelumnya</small>
-                        <strong style="font-size:0.9rem;">
-                            artikel sebelumnya
-                        </strong>
-                    </a>
+                    @if($prevNews)
+                        <a
+                            href="{{route('frontendnews.show', $prevNews->id)}}"
+                            class="card border-0 shadow-sm rounded-3 text-decoration-none h-100 p-3 d-block"
+                            style="transition:background 0.3s;"
+                            onmouseover="this.style.background='#fff3eb'"
+                            onmouseout="this.style.background='white'"
+                        >
+                            <small class="d-block mb-1 fw-semibold" style="color:#ff6b35;">&larr; Sebelumnya</small>
+                            <strong style="font-size:0.9rem; color:#1a1a1a;">
+                                {{Str::limit($prevNews->title, 60)}}
+                            </strong>
+                        </a>
+                    @else
+                        <div class="card border-0 bg-light rounded-3 h-100 p-3 d-flex align-items-center justify-content-center">
+                            <small class="text-muted">Tidak ada artikel sebelumnya</small>
+                        </div>
+                    @endif
                 </div>
 
-                <!-- next -->
+                <!-- Selanjutnya -->
                 <div class="col-6">
-                    <a
-                        href="{{route('frontendnews')}}"
-                        class="card border-0 shadow-sm rounded-3 text-decoration-none h-100 p-3 d-block text-end"
-                        style="transition:background 0.3s;"
-                        onmouseover="this.style.background='#f8f9fa'"
-                        onmouseout="this.style.background='white'"
-                    >
-                        <small class="text-muted d-block mb-1">selanjutnya &rarr;</small>
-                        <strong style="font-size:0.9rem;">
-                            artikel selanjutnya
-                        </strong>
-                    </a>
+                    @if($nextNews)
+                        <a
+                            href="{{route('frontendnews.show', $nextNews->id)}}"
+                            class="card border-0 shadow-sm rounded-3 text-decoration-none h-100 p-3 d-block text-end"
+                            style="transition:background 0.3s;"
+                            onmouseover="this.style.background='#fff3eb'"
+                            onmouseout="this.style.background='white'"
+                        >
+                            <small class="d-block mb-1 fw-semibold" style="color:#ff6b35;">Selanjutnya &rarr;</small>
+                            <strong style="font-size:0.9rem; color:#1a1a1a;">
+                                {{Str::limit($nextNews->title, 60)}}
+                            </strong>
+                        </a>
+                    @else
+                        <div class="card border-0 bg-light rounded-3 h-100 p-3 d-flex align-items-center justify-content-center">
+                            <small class="text-muted">Tidak ada artikel selanjutnya</small>
+                        </div>
+                    @endif
                 </div>
+
             </div>
         </div>
     </div>
@@ -199,39 +214,52 @@
             berita terkait
         </h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            @for($i=1; $i<=3; $i++)
+            @forelse($relatedNews as $related)
             <div class="col">
-                <div class="card border-0 shadow-sm rounded-4 h-100">
-                    <img
-                        src="https://via.placeholder.com/800x500"
-                        alt="berita terkait {{ $i }}"
-                        class="card-img-top"
-                        style="object-fit:cover; height:200px;"
-                    >
-                    <div class="card-body">
-                        <span class="badge mb-2" style="background:#ffb64a;">
-                            teknologi
-                        </span>
-                        <h6 class="card-title fw-bold">
-                            judul berita terkait {{$i}}
-                        </h6>
-                        <p class="card-text text-muted" style="font-size:0.85rem;">
-                            ringkasan singkat isi berita terkait ini ditambahkan disini.
-                        </p>
-                        <a
-                            href="{{route('frontendnews')}}"
-                            class="text-decoration-none fw-semibold"
-                            style="color:#ffb64a; font-size:0.85rem;"
+                <a href="{{route('frontendnews.show', $related->id)}}"
+                   class="card border-0 shadow-sm rounded-4 h-100 text-decoration-none"
+                   style="transition: transform 0.3s, box-shadow 0.3s;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.12)';"
+                   onmouseout="this.style.transform=''; this.style.boxShadow='';"
+                >
+                    @if($related->image)
+                        <img
+                            src="{{asset('storage/'.$related->image)}}"
+                            alt="{{$related->title}}"
+                            class="card-img-top"
+                            style="object-fit:cover; height:200px;"
                         >
-                        baca selengkapnya &rarr;
-                        </a>
+                    @else
+                        <div class="card-img-top d-flex align-items-center justify-content-center"
+                             style="height:200px; background:linear-gradient(135deg,#ff6b35,#ffb64a);">
+                            <span style="font-size:3rem;">📰</span>
+                        </div>
+                    @endif
+                    <div class="card-body d-flex flex-column">
+                        <small class="text-muted mb-2" style="font-size:0.75rem;">
+                            {{ date('d F Y', strtotime($related->created_at)) }}
+                        </small>
+                        <h6 class="card-title fw-bold" style="color:#1a1a1a; line-height:1.4;">
+                            {{ Str::limit($related->title, 70) }}
+                        </h6>
+                        <p class="card-text text-muted mt-1" style="font-size:0.85rem; flex:1;">
+                            {{ Str::limit($related->content, 100) }}
+                        </p>
+                        <span class="fw-semibold mt-2" style="color:#ff6b35; font-size:0.85rem;">
+                            baca selengkapnya &rarr;
+                        </span>
                     </div>
-                </div>
+                </a>
             </div>
-            @endfor
+            @empty
+            <div class="col-12">
+                <p class="text-muted text-center py-4">Belum ada berita terkait.</p>
+            </div>
+            @endforelse
         </div>
     </div>
 </section>
+
 
 <!-- news letter -->
 <section style="background:linear-gradient(135deg, #ff6b35 0%, #ff8f57 50%, #ffb64a 100%);">
