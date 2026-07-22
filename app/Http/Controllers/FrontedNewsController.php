@@ -7,13 +7,27 @@ use Illuminate\Http\Request;
 
 class FrontedNewsController extends Controller
 {
-   public function index()
+   public function index(Request $request)
    {
-       // Mengambil semua berita, diurutkan dari yang terbaru
-       // Eager Loading 'author' untuk mengoptimalkan query relasi created_by
+       // Semua berita untuk statistik hero (total artikel, penulis, bulan ini)
        $allNews = News::with('author')->orderBy('created_at', 'desc')->get();
 
-       return view('frontend.news.index', compact('allNews'));
+       // Berita utama (1 artikel terbaru)
+       $featured = News::with('author')->orderBy('created_at', 'desc')->first();
+
+       // Berita samping (3 artikel terbaru setelah featured)
+       $sideNews = News::with('author')
+                       ->orderBy('created_at', 'desc')
+                       ->limit(3)->offset(1)
+                       ->get();
+
+       // Artikel lainnya (semua berita setelah featured, selalu terupdate)
+       $latestNews = News::with('author')
+                         ->orderBy('created_at', 'desc')
+                         ->limit(PHP_INT_MAX)->offset(1)
+                         ->get();
+
+       return view('frontend.news.index', compact('allNews', 'featured', 'sideNews', 'latestNews'));
    }
 
    public function show($id)
