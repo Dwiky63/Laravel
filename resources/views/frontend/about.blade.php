@@ -346,7 +346,7 @@
                 <p>Yang dimaksud relay adalah sebuah komponen elektronika yang berbentuk sakelar yang dioperasikan dengan listrik, dilengkapi 2 bagian diantaranya elektromagnet (Coil) dan mekanikal (Switch). Dimana komponen tersebut memanfaatkan prinsip elektromagnetik untuk dapat menggerakkan sakelar sehingga dapat menghantarkan arus listrik.</p>
                 <p>Menurut Wikipedia, Relai adalah suatu peranti yang menggunakan elektromagnet untuk mengoperasikan seperangkat kontak sakelar. Susunan paling sederhana terdiri dari kumparan kawat penghantar yang dililit pada inti besi.</p>
                 <p>Lantas adakah perbedaan antara relay dengan sakelar? Sebenarnya cukup mudah membedakan diantara keduanya. Relay adalah komponen yang dapat dijalankan hanya dengan tenaga listrik sedangkan sakelar adalah komponen listrik yang digunakan untuk memutus dan menghubungkan aliran listrik.</p>
-                <a href="{{ route('news') }}" class="btn cta-btn" style="background: var(--brand-primary); color: #fff; margin-top: 1.5rem;">Read Latest News</a>
+                <a href="{{ route('frontendnews') }}" class="btn cta-btn" style="background: var(--brand-primary); color: #fff; margin-top: 1.5rem;">Read Latest News</a>
             </div>
             <div class="col-lg-6">
                 <div class="story-image">

@@ -41,7 +41,7 @@ class CareerController extends DefaultController
 
     public function frontendIndex()
     {
-        $careers = Career::where('status','open')->latest()->get();
+        $careers = Career::latest()->get();
         return view('frontend.career', compact('careers'));
     }
 

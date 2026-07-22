@@ -557,12 +557,7 @@
         </div>
     </section>
 
-    @if($allNews->count() > 0)
-        @php
-            $featured = $allNews->first();
-            $sides    = $allNews->skip(1)->take(3);
-            $latest   = $allNews->skip(4);
-        @endphp
+    @if($featured)
 
         {{-- ===== FEATURED + SIDE CARDS ===== --}}
         <section class="np-section np-container">
@@ -601,7 +596,7 @@
 
                 {{-- Side cards --}}
                 <div class="np-featured-sides">
-                    @foreach($sides as $item)
+                    @foreach($sideNews as $item)
                         <a href="{{ route('frontendnews.show', $item->id) }}" class="np-side-card">
                             <div class="np-side-img">
                                 @if($item->image)
@@ -622,7 +617,7 @@
         </section>
 
         {{-- ===== LATEST ARTICLES ===== --}}
-        @if($latest->count() > 0)
+        @if($latestNews->count() > 0)
             <section class="np-section np-container" style="padding-top:0;">
                 <div class="np-sec-head">
                     <div>
@@ -632,7 +627,7 @@
                 </div>
 
                 <div class="np-latest-grid">
-                    @foreach($latest as $item)
+                    @foreach($latestNews as $item)
                         <a href="{{ route('frontendnews.show', $item->id) }}" class="np-latest-card">
                             <div class="np-latest-img">
                                 @if($item->image)
