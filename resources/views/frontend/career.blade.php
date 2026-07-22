@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+﻿@extends('layouts.frontend')
 
 @section('title', 'Career - Join Our Team')
 
@@ -968,39 +968,81 @@
 </div>
 
 <!-- Apply Modal -->
-<div class="modal-overlay" id="applyModal">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <div class="modal-header">
-            <h2 class="modal-title">Apply Now</h2>
-            <p class="modal-subtitle">Join our team and grow with us</p>
+<div id="applyModal" style="display:none; position:fixed; inset:0; z-index:9999;
+     background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
+     align-items:center; justify-content:center; padding:20px;">
+    <div style="background:#fff; border-radius:20px; max-width:440px; width:100%;
+                padding:32px 28px; position:relative; text-align:center;
+                box-shadow:0 24px 60px rgba(0,0,0,.25); animation:popInCareer .25s ease;">
+
+        <!-- Tombol Close -->
+        <button onclick="closeModal()"
+                style="position:absolute; top:14px; right:14px; background:#f0f0f0;
+                       border:none; width:32px; height:32px; border-radius:50%;
+                       font-size:1.1rem; cursor:pointer; line-height:1; color:#555;"
+                onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#f0f0f0'">
+            &times;
+        </button>
+
+        <!-- Icon -->
+        <div style="width:64px; height:64px; border-radius:50%;
+                    background:linear-gradient(135deg,#ff6b35,#ffb020);
+                    display:flex; align-items:center; justify-content:center;
+                    margin:0 auto 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>
         </div>
 
-        <form id="applicationForm" onsubmit="submitApplication(event)">
-            <div class="form-group-modal">
-                <label class="form-label-modal">Full Name</label>
-                <input type="text" class="form-input-modal" id="fullName" required>
-            </div>
+        <!-- Judul -->
+        <h2 style="font-size:1.25rem; font-weight:800; color:#1a1a1a; margin-bottom:8px;">
+            Kirim Lamaranmu!
+        </h2>
+        <p id="applyJobTitle" style="color:#ff6b35; font-weight:600; font-size:.88rem;
+                                      margin-bottom:6px; min-height:1.2em;"></p>
+        <p style="color:#6b7280; font-size:.82rem; margin-bottom:20px; line-height:1.5;">
+            Silahkan kirimkan CV dan surat lamaran kamu ke email HRD kami
+        </p>
 
-            <div class="form-group-modal">
-                <label class="form-label-modal">Email Address</label>
-                <input type="email" class="form-input-modal" id="email" required>
+        <!-- Email Box -->
+        <div style="background:#fff8f5; border:2px solid rgba(255,107,53,.2);
+                    border-radius:14px; padding:14px 20px; margin-bottom:16px;">
+            <div style="font-size:.65rem; font-weight:700; letter-spacing:.1em;
+                        color:#ff6b35; text-transform:uppercase; margin-bottom:4px;">Email HRD</div>
+            <div style="font-size:1rem; font-weight:700; color:#1a1a1a;">
+                hrd@gmail.com
             </div>
+        </div>
 
-            <div class="form-group-modal">
-                <label class="form-label-modal">Phone Number</label>
-                <input type="tel" class="form-input-modal" id="phone" required>
-            </div>
+        <!-- Checklist -->
+        <div style="background:#f8f9fa; border-radius:12px; padding:12px 16px;
+                    text-align:left; margin-bottom:22px; font-size:.79rem; color:#5b6d8b;">
+            <div style="font-weight:700; margin-bottom:6px; color:#1a1a1a;">Sertakan dalam lamaran:</div>
+            <ul style="margin:0; padding-left:16px; line-height:1.85;">
+                <li>CV / Resume terbaru (PDF)</li>
+                <li>Surat lamaran kerja</li>
+                <li>Posisi yang dilamar di subject email</li>
+                <li>Portofolio (jika ada)</li>
+            </ul>
+        </div>
 
-            <div class="form-group-modal">
-                <label class="form-label-modal">Cover Letter</label>
-                <textarea class="form-input-modal" id="coverLetter" placeholder="Tell us why you'd be a great fit..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit-modal">Submit Application</button>
-        </form>
+        <!-- Tutup -->
+        <button onclick="closeModal()"
+                style="width:100%; background:#ff6b35; color:#fff; border:none;
+                       padding:12px; border-radius:999px; font-weight:700;
+                       font-size:.9rem; cursor:pointer; transition:background .2s;"
+                onmouseover="this.style.background='#e55a2a'" onmouseout="this.style.background='#ff6b35'">
+            Tutup
+        </button>
     </div>
 </div>
+
+<style>
+@keyframes popInCareer {
+    from { transform: scale(.9); opacity: 0; }
+    to   { transform: scale(1);  opacity: 1; }
+}
+</style>
 
 <!-- Toast Notification -->
 <div class="toast" id="toast"></div>
@@ -1121,16 +1163,24 @@
 
     // Modal Functions
     function openModal() {
-        document.getElementById('applyModal').classList.add('active');
+        const m = document.getElementById('applyModal');
+        m.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-        document.getElementById('applyModal').classList.remove('active');
+        document.getElementById('applyModal').style.display = 'none';
+        document.body.style.overflow = '';
     }
 
     function openApplyModal(jobTitle) {
+        document.getElementById('applyJobTitle').textContent = jobTitle ? 'Posisi: ' + jobTitle : '';
+        // Update mailto subject dengan nama posisi
+        const mailLink = document.querySelector('#applyModal a[href^="mailto"]');
+        if (mailLink) {
+            mailLink.href = 'mailto:hrd@gmail.com?subject=Lamaran Kerja - ' + encodeURIComponent(jobTitle || '');
+        }
         openModal();
-        document.getElementById('fullName').focus();
     }
 
     // Form Submission
