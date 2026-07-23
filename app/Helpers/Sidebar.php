@@ -77,7 +77,7 @@ class Sidebar
         ],
         [
           'name' => 'Career',
-          'icon' => 'ti ti-brifcase',
+          'icon' => 'ti ti-briefcase',
           'key' => 'career',
           'base_key' => 'career',
           'visibility' => true,

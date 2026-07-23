@@ -5,7 +5,7 @@ function submitAfterValid(formId, suffixID = "", massError = false) {
 
     var imgLoading =
         "<img src='" +
-        baseUrl +
+        location.origin +
         "/easyadmin/idev/img/loading-buffering.gif' style='width:15px;' width='20px'>";
     $("#btn-for-" + formId).html(imgLoading + " Processing...");
     $("#btn-for-" + formId).attr("disabled", "disabled");
@@ -131,7 +131,7 @@ function idevTable(formId, attrs = []) {
     $("button").attr("disabled", "disabled");
     $(
         "<div class='idev-loading loading-table text-center' style='width:100%;'><img src='" +
-            baseUrl +
+            location.origin +
             "/easyadmin/idev/img/loading-buffering.gif' width='28px'><br>Processing...</div>"
     ).insertAfter(idTable);
     $(".count-total").text("");
@@ -427,7 +427,7 @@ function softSubmit(formId, reloadList, callback = false) {
 
     var imgLoading =
         "<img src='" +
-        baseUrl +
+        location.origin +
         "/easyadmin/idev/img/loading-buffering.gif' style='width:15px;' width='20px'>";
     $("#btn-for-" + formId).html(imgLoading + " Processing...");
     $("#btn-for-" + formId).attr("disabled", "disabled");
